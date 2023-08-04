@@ -1,0 +1,11 @@
+$ sudo dd if=source-disk of=destination-disk [option]
+
+$ sudo dd if=/dev/sdb of=/dev/sdc status=progress
+
+$ sudo dd if=/dev/ada0 of=/dev/adb0 bs=64K conv=noerror,sync
+
+if=/dev/file : Input device/file.
+of=/dev/file : Output device/file.
+bs=64k : Sets the block size to 64k. You can use 128k or any other value.
+conv=noerror : Tell dd to continue operation, ignoring all read errors.
+sync : Add input blocks with zeroes if there were any read errors, so data offsets stay in sync.
