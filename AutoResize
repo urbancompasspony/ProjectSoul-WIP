@@ -9,7 +9,9 @@ $ sudo resize2fs -M /dev/sda1
 $ sudo ntfsfix -d -b /dev/sda1
 
 # Check Space Left:
-$ sudo ntfsresize --info /dev/sdb3 | grep Space | awk {'print $5'}
+$ sudo ntfsresize --info /dev/sda1 | grep Space | awk {'print $5'}
 
 # Set new space:
 $ sudo ntfsresize --size 40G /dev/sda1 -f
+
+$ sudo ntfsfix -d -b /dev/sda1
