@@ -1,0 +1,18 @@
+$ kpartx -a -v foo.raw
+
+$ losetup --find --partscan --show whatever.img
+
+$ sudo mount -o ro,loop,offset=$((10747904 * 512)) disk-drive-virtio0.raw /mnt/lbox/
+
+sudo losetup --find --show disk-drive-virtio0.raw
+sudo partx -u /dev/loop0
+sudo mount /dev/loop0p1 /mnt/lbox
+
+mount -o offset=<offset in bytes> nps-2010-emails.dd /media/manu/
+
+losetup -f -P sda.img
+
+GZ FILE
+ zcat "image.raw.gz name here"  > /dev/yourdiskhere
+
+archivemount -o formatraw windows-2003-S.gz /target/
