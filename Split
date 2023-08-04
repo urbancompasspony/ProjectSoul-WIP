@@ -1,0 +1,19 @@
+
+$ dd if=/dev/sda bs=4M | gzip -c | split -b 2G - /mnt/backup_sda.img.gz
+
+$ cat /mnt/UDISK1T/backup_sda.img.gz.* | gzip -dc | dd of=/dev/sda bs=4M
+
+# Sets pipefail so failed dd makes the whole pipe command fail
+set -o pipefail
+dd_result=0
+split=0
+filenameSplit=
+while [ $dd_result == 0 ]
+do
+    cmd="dd if=/dev/sdX bs=2G count=1 skip=$split | pigz --fast > \"2G.$filenameSplit.myharddisk.gz\""
+    echo $cmd
+    eval $cmd
+    dd_result=$?
+    split=$((split + 1))
+    filenameSplit=$split
+done
