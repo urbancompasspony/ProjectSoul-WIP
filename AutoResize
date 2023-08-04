@@ -1,0 +1,15 @@
+
+# # # Expand EXT4:
+$ sudo resize2fs /dev/sda2
+
+Shrink EXT4 (Offline):
+$ sudo resize2fs -M /dev/sda1
+
+# # # Resize NTFS:
+$ sudo ntfsfix -d -b /dev/sda1
+
+# Check Space Left:
+$ sudo ntfsresize --info /dev/sdb3 | grep Space | awk {'print $5'}
+
+# Set new space:
+$ sudo ntfsresize --size 40G /dev/sda1 -f
