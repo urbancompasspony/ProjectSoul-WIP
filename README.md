@@ -1,4 +1,4 @@
-# project-ghost
+# project-soul: A Symantec Ghost alternative!
 
 Symantec Ghost alternative to resize filesystem and create a backup image on the simplest way possible.
 
