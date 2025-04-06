@@ -1,3 +1,5 @@
 dd if=/dev/sda status=progress oflag=sync bs=4M | lz4 -1 -c - > BKPDSK.lz4
 
 sudo lz4 -1 -d BKPDSK.lz4 > /dev/sda
+
+ssh bastião "cat arquivo.lz4" | lz4 -d -c >> /dev/sda
